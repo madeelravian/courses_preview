@@ -2,13 +2,14 @@ const courseGrid = document.getElementById("courseGrid");
 const template = document.getElementById("courseCardTemplate");
 const resultsCount = document.getElementById("resultsCount");
 const searchInput = document.getElementById("searchInput");
+const previewModal = document.getElementById("previewModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const previewVideo = document.getElementById("previewVideo");
+const modalCloseButton = document.getElementById("modalCloseButton");
 
 let courses = [];
-
-function getManifestUrl() {
-  const params = new URLSearchParams(window.location.search);
-  return params.get("manifest") || "data/courses.json";
-}
+let lastFocusedButton = null;
 
 function inferTypeLabel(course) {
   if (course.type) {
@@ -57,9 +58,9 @@ function createCard(course) {
   title.textContent = course.title;
   description.textContent = course.description;
   meta.textContent = buildMeta(course);
-  action.href = course.url;
-  action.textContent = course.ctaLabel || "Open preview";
-  action.setAttribute("aria-label", `Open preview for ${course.title}`);
+  action.textContent = course.ctaLabel || "Watch preview";
+  action.setAttribute("aria-label", `Watch preview for ${course.title}`);
+  action.addEventListener("click", () => openPreview(course, action));
 
   (course.tags || []).forEach((tagLabel) => {
     const tag = document.createElement("span");
@@ -74,6 +75,29 @@ function createCard(course) {
 
   card.style.animation = "fadeUp 420ms ease both";
   return fragment;
+}
+
+function openPreview(course, triggerButton) {
+  lastFocusedButton = triggerButton;
+  modalTitle.textContent = course.title;
+  modalDescription.textContent = course.description || "Course preview video";
+  previewVideo.src = course.url;
+  previewVideo.poster = course.poster || "";
+  previewModal.hidden = false;
+  document.body.classList.add("modal-open");
+  modalCloseButton.focus();
+}
+
+function closePreview() {
+  previewModal.hidden = true;
+  document.body.classList.remove("modal-open");
+  previewVideo.pause();
+  previewVideo.removeAttribute("src");
+  previewVideo.load();
+
+  if (lastFocusedButton) {
+    lastFocusedButton.focus();
+  }
 }
 
 function renderCourses(items) {
@@ -110,8 +134,7 @@ function filterCourses(query) {
 
 async function loadCourses() {
   try {
-    const manifestUrl = getManifestUrl();
-    const response = await fetch(manifestUrl, { cache: "no-store" });
+    const response = await fetch("data/courses.json", { cache: "no-store" });
 
     if (!response.ok) {
       throw new Error(`Request failed with status ${response.status}`);
@@ -123,7 +146,7 @@ async function loadCourses() {
   } catch (error) {
     courseGrid.innerHTML = `
       <div class="empty-state">
-        Failed to load course data. Check your manifest file and confirm it is publicly reachable from the browser.
+        Failed to load course data. Check <code>data/courses.json</code> and confirm your GitHub Pages deployment includes it.
       </div>
     `;
     resultsCount.textContent = "Courses unavailable";
@@ -133,6 +156,20 @@ async function loadCourses() {
 
 searchInput.addEventListener("input", (event) => {
   filterCourses(event.target.value);
+});
+
+previewModal.addEventListener("click", (event) => {
+  if (event.target instanceof HTMLElement && event.target.dataset.closeModal === "true") {
+    closePreview();
+  }
+});
+
+modalCloseButton.addEventListener("click", closePreview);
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !previewModal.hidden) {
+    closePreview();
+  }
 });
 
 loadCourses();

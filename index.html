@@ -103,12 +103,33 @@
             <div class="course-tags"></div>
             <div class="course-card-footer">
               <div class="course-meta"></div>
-              <a class="button button-card" target="_blank" rel="noreferrer">Open preview</a>
+              <button class="button button-card" type="button">Watch preview</button>
             </div>
           </article>
         </template>
       </section>
     </main>
+  </div>
+
+  <div class="modal" id="previewModal" hidden>
+    <div class="modal-backdrop" data-close-modal="true"></div>
+    <section
+      class="modal-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      aria-describedby="modalDescription"
+    >
+      <button class="modal-close" id="modalCloseButton" type="button" aria-label="Close preview">Close</button>
+      <div class="modal-copy">
+        <p class="eyebrow">Course preview</p>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDescription" class="modal-description"></p>
+      </div>
+      <div class="modal-video-shell">
+        <video id="previewVideo" class="modal-video" controls playsinline preload="metadata"></video>
+      </div>
+    </section>
   </div>
 
   <script src="app.js" defer></script>
