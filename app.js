@@ -7,7 +7,7 @@ let courses = [];
 
 function getManifestUrl() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("manifest") || "courses.json";
+  return params.get("manifest") || "data/courses.json";
 }
 
 function inferTypeLabel(course) {
