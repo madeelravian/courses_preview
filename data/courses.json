@@ -1,0 +1,49 @@
+{
+  "courses": [
+    {
+      "title": "Course 1",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "url": "https://pub-93138da19b6946258896e0497d2747e9.r2.dev/course_preview.mp4",
+      "type": "Video",
+      "duration": "32 min",
+      "level": "Beginner",
+      "tags": ["Tag1", "Tag2", "Tag3"]
+    },
+    {
+      "title": "Course 2",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "url": "https://pub-93138da19b6946258896e0497d2747e9.r2.dev/course_preview.mp4",
+      "type": "Video",
+      "duration": "32 min",
+      "level": "Beginner",
+      "tags": ["Tag1", "Tag2", "Tag3"]
+    },
+    {
+      "title": "Course 3",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "url": "https://pub-93138da19b6946258896e0497d2747e9.r2.dev/course_preview.mp4",
+      "type": "Video",
+      "duration": "32 min",
+      "level": "Beginner",
+      "tags": ["Tag1", "Tag2", "Tag3"]
+    },
+        {
+      "title": "Course 4",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "url": "https://pub-93138da19b6946258896e0497d2747e9.r2.dev/course_preview.mp4",
+      "type": "Video",
+      "duration": "32 min",
+      "level": "Beginner",
+      "tags": ["Tag1", "Tag2", "Tag3"]
+    },
+        {
+      "title": "Course 5",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "url": "https://pub-93138da19b6946258896e0497d2747e9.r2.dev/course_preview.mp4",
+      "type": "Video",
+      "duration": "32 min",
+      "level": "Beginner",
+      "tags": ["Tag1", "Tag2", "Tag3"]
+    },
+  ]
+}

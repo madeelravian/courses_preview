@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="A curated preview gallery for online courses, powered by public files hosted on Cloudflare R2."
+  >
+  <title>Course Preview Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <!-- <header class="hero">
+      <nav class="topbar" aria-label="Primary">
+        <a class="brand" href="#top">
+          <span class="brand-mark">CP</span>
+          <span class="brand-copy">
+            <strong>Course Preview</strong>
+            <span>Shareable GitHub Pages showcase</span>
+          </span>
+        </a>
+        <a class="topbar-link" href="#courses">Browse previews</a>
+      </nav>
+
+      <section class="hero-content" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">Public course previews</p>
+          <h1>Present your course library with a polished purple-blue showcase.</h1>
+          <p class="hero-text">
+            Add your Cloudflare R2 file links once, publish to GitHub Pages, and share a clean catalog of previews with titles,
+            descriptions, tags, and direct preview buttons.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#courses">Explore courses</a>
+            <a class="button button-secondary" href="data/courses.json">Edit course data</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Course summary">
+          <div class="hero-stat">
+            <span class="hero-stat-label">Format</span>
+            <strong>Static site</strong>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Hosting</span>
+            <strong>GitHub Pages</strong>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-label">Assets</span>
+            <strong>Cloudflare R2</strong>
+          </div>
+        </aside>
+      </section>
+    </header> -->
+
+    <main>
+      <!-- <section class="section section-intro" aria-label="Highlights">
+        <article class="info-card">
+          <span class="info-kicker">Beautiful by default</span>
+          <h2>Bold gradients, layered light, and responsive cards.</h2>
+          <p>The layout is optimized for desktop and mobile without any build step or framework dependency.</p>
+        </article>
+        <article class="info-card">
+          <span class="info-kicker">Easy to maintain</span>
+          <h2>Update one JSON file to change what the world sees.</h2>
+          <p>Each course card is generated from a manifest so you can keep content edits simple and predictable.</p>
+        </article>
+      </section> -->
+
+      <section class="section section-courses" id="courses">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Library</p>
+            <h2>Available course previews</h2>
+          </div>
+          <!-- <p class="section-caption">Point each entry at a public R2 URL and the page will render it automatically.</p> -->
+        </div>
+
+        <div class="toolbar" aria-label="Course filters">
+          <label class="search-field" for="searchInput">
+            <span>Search courses</span>
+            <input id="searchInput" type="search" placeholder="Search by title, description, or tag">
+          </label>
+          <p class="results-count" id="resultsCount" aria-live="polite">Loading courses...</p>
+        </div>
+
+        <div class="course-grid" id="courseGrid" aria-live="polite"></div>
+        <template id="courseCardTemplate">
+          <article class="course-card">
+            <div class="course-card-top">
+              <span class="course-type"></span>
+              <h3 class="course-title"></h3>
+              <p class="course-description"></p>
+            </div>
+            <div class="course-tags"></div>
+            <div class="course-card-footer">
+              <div class="course-meta"></div>
+              <a class="button button-card" target="_blank" rel="noreferrer">Open preview</a>
+            </div>
+          </article>
+        </template>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
